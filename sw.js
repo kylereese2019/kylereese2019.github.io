@@ -16,10 +16,27 @@ self.addEventListener('install', function(e) {
 });
 
 /* Serve cached content when offline */
+/*
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
       return response || fetch(e.request);
     })
   );
+});
+*/
+
+// when the browser fetches a URL…
+self.addEventListener('fetch', function(event) {
+    // … either respond with the cached object or go ahead and fetch the actual URL
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            if (response) {
+                // retrieve from cache
+                return response;
+            }
+            // fetch as normal
+            return fetch(event.request);
+        })
+    );
 });
