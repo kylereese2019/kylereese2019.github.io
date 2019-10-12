@@ -28,7 +28,7 @@
     }],
   "lang": "en-US",
   "start_url": "/index.html",
-  "display": "minimal-ui",
+  "display": "browser",
   "background_color": "purple",
   "theme_color": "blue"
 }
