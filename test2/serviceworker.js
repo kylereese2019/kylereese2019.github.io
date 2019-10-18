@@ -2,11 +2,14 @@ self.addEventListener("install", function(event) {
   console.log("creation du cache au moment de l'install");
   event.waitUntil(
     caches.open("test2-cache").then(function(cache) {
-      return cache.add("/test2/test2-offline.html");
+      return cache.add("/test2/test2-offline.html").then(function() {
+        return cache.add("/test2/css/style2.css");
+      });
     })
   );
 });
 
+/*
 self.addEventListener("fetch", function(event) {
   event.respondWith(
     fetch(event.request).catch(function() {
@@ -15,7 +18,6 @@ self.addEventListener("fetch", function(event) {
   );
 });
 
-/*
 self.addEventListener("fetch", function(event) {
   console.log("Fetch request for: ", event.request.url);
 
