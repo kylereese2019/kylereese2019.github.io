@@ -2,7 +2,6 @@ self.addEventListener("fetch", function(event) {
   console.log("Fetch request for: ", event.request.url);
 
   /*
-  */
   if (event.request.url.includes("style2.css")) {
     event.respondWith(
       new Response(
@@ -11,6 +10,7 @@ self.addEventListener("fetch", function(event) {
       )
     )
   };
+  */
   
   event.respondWith(
     fetch(event.request).catch(function() {
