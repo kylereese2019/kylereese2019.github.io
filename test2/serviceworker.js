@@ -1,4 +1,5 @@
 self.addEventListener("install", function(event) {
+  console.log("creation du cache au moment de l'install");
   event.waitUntil(
     caches.open("test2-cache").then(function(cache) {
       return cache.add("/test2/test2-offline.html");
