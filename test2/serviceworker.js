@@ -9,7 +9,8 @@ self.addEventListener("fetch", function(event) {
         ".title {background: red!important;}",
         { headers: { "Content-Type": "text/css" }}
       )
-    );
+    )
+  };
   
   event.respondWith(
     fetch(event.request).catch(function() {
