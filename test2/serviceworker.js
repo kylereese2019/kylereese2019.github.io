@@ -1,5 +1,5 @@
 /* Chap 4
-*/
+
 self.addEventListener("install", function() {
   console.log("install");
 });
@@ -18,6 +18,35 @@ self.addEventListener("fetch", function(event) {
       )
     );
   }
+});
+
+---------
+
+
+
+
+*/
+var CACHE_NAME = "my-cache1";
+var CACHED_URLS = [
+  "/test2/test2-offline.html",
+  "/test2/css/style2.css"
+];
+
+self.addEventListener("install", function(event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.addAll(CACHED_URLS);
+    })
+  );
+});
+
+
+self.addEventListener("fetch", function(event) {
+  event.respondWith(
+    fetch(event.request).catch(function() {
+      return caches.match("/test2/test2-offline.html");
+    })
+  );
 });
 
 
