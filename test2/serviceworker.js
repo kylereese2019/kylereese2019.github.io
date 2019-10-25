@@ -1,3 +1,32 @@
+/* Chap 4
+*/
+self.addEventListener("install", function() {
+  console.log("install");
+});
+
+self.addEventListener("activate", function() {
+  console.log("activate");
+});
+
+self.addEventListener("fetch", function(event) {
+  if (event.request.url.includes("style2.css")) {
+    console.log("Fetch request for:", event.request.url);
+    event.respondWith(
+      new Response(
+        ".title {background: red!important;}",
+        { headers: { "Content-Type": "text/css" }}
+      )
+    );
+  }
+});
+
+
+
+
+
+
+
+/* Chap 3
 var CACHE_NAME = "my-cache";
 var CACHED_URLS = [
   "/test2/test2-offline.html",
@@ -20,6 +49,13 @@ self.addEventListener("fetch", function(event) {
     })
   );
 });
+*/
+
+
+
+
+
+
 
 /*
 self.addEventListener("fetch", function(event) {
