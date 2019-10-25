@@ -21,12 +21,10 @@ self.addEventListener("fetch", function(event) {
 });
 
 ---------
-
-
-
-
 */
-var CACHE_NAME = "my-cache1";
+
+
+var CACHE_NAME = "my-cache2";
 var CACHED_URLS = [
   "/test2/test2-offline.html",
   "/test2/css/style2.css"
