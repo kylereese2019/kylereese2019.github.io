@@ -13,7 +13,7 @@ self.addEventListener("fetch", function(event) {
     console.log("Fetch request for:", event.request.url);
     event.respondWith(
       new Response(
-        ".title {background: red!important;}",
+        ".title {background: yellow!important;}",
         { headers: { "Content-Type": "text/css" }}
       )
     );
