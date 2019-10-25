@@ -1,13 +1,17 @@
+var CACHE_NAME = "my-cache";
+var CACHED_URLS = [
+  "/test2/test2-offline.html",
+  "/test2/css/style2.css"
+];
+
 self.addEventListener("install", function(event) {
-  console.log("creation du cache au moment de l'install");
   event.waitUntil(
-    caches.open("test2-cache").then(function(cache) {
-      return cache.add("/test2/test2-offline.html").then(function() {
-        return cache.add("/test2/css/style2.css");
-      });
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.addAll(CACHED_URLS);
     })
   );
 });
+
 
 self.addEventListener("fetch", function(event) {
   event.respondWith(
