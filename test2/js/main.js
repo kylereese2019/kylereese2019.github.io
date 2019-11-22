@@ -6,3 +6,9 @@ if ("serviceWorker" in navigator) {
       console.log("Service worker registration failed: ", err);
     });
 }
+
+Notification.requestPermission().then(function(permission) {
+  if (permission === "granted") {
+    new Notification("Shiny");
+  }
+})
